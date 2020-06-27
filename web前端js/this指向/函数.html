@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    // function move(){
+    //     console.log(this);
+    // }
+    // move();   //函数自己直接调用  this指向window(非严格模式)      this指向undefined(严格模式)
+    // window.move();   //严格模式可以这样调用   this指向window
+
+    var obj = {
+        a:10,
+        b:{
+            fn:function(){
+                console.log(this);
+            }
+        }
+    };
+    // obj.b();
+    // window.obj.b();
+    window.obj.b.fn();
+    let abc = obj.b.fn;
+    abc();
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .lili,.box{
+            width:100px;
+            height: 100px;
+            background-color: blue;
+            position: relative;
+            left: 0;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="lili"></div>
+</body>
+<script>
+    let box = document.querySelector('.box');
+    let lili = document.querySelector('.lili');
+    box.onclick = move;
+    lili.onclick = move;
+    function move(){
+        setTimeout(function(){    //此时匿名函数this指向的是window,此时会报错
+            this.style.left = '100px';
+        },1000)
+
+        var _this = this
+        setTimeout(function(){    //
+            _this.style.left = '100px';
+        },1000)
+        // setTimeout(()=>{    //此时匿名函数this指向的是window
+        //     this.style.left = '100px';
+        // },1000)
+    }
+    var obj = {
+        fn:()=>{
+            console.log(this);
+        }
+    }
+    obj.fn();    //指向window,  
+    
+</script>
+</html>
