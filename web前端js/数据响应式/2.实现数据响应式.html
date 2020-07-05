@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script src="./2.myvue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{name}}
+        <div>{{message}}</div>
+    </div>
+</body>
+<script>
+    let vm = new vue({
+        el:'#app',
+        data: {
+            name: 'lili',
+            message:'测试数据'
+        }
+    })
+    console.log(vm);
+</script>
+</html>

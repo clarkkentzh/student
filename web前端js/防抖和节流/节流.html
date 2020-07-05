@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    var box = document.querySelector('.box');
+    var testjl = jl(move,400);
+
+    box.onmousemove = testjl
+    
+    function move(event){
+        this.innerHTML = event.clientX;
+    }
+
+    // function jl(fn,wait){
+    //     let timmer = null;
+    //     return function(){
+    //         var args = arguments;
+    //         if(!timmer){
+    //             timmer = setTimeout(()=>{
+    //                 timmer = null;          //这里没有清除定时器
+    //                 fn.apply(this,args);
+    //             },wait)
+    //         }
+    //     }   
+    // }
+
+    function jl(fn,wait){
+        let timmer = null;
+        let last = 0;
+        return function(){
+            var args = arguments;
+            var now = Date.now();
+            if(now - last > wait){
+                fn.apply(this,args);
+                last = now;
+            }
+        }   
+    }
+</script>
+</html>

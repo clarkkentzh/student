@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    var box = document.querySelector('.box');
+    var data = {
+        name: '数据',
+        age: 20
+    }
+    // box.innerHTML =data.age;
+    // data.age = 21;
+
+    let p = new Proxy(data, {
+        set(target,prop,newvalue){    //对象的属性被修改的时候触发，必须有返回值才能修改成功
+            console.log('set..',target,prop,newvalue);
+            return Reflect.set(...arguments);     //Reflect确保原生方法成功调用，set和上面的set的参数相同
+        },
+        get(target,prop){    //对象的属性被读取的时候触发, 必须返回外界才能读取到值，返回多少，外界读取多少
+            console.log('get....', target,prop);
+            // return 10;
+            return Reflect.get(...arguments);     //Reflect确保原生方法成功调用，get和上面的get的参数相同
+        }
+    });
+    p.age = 21;
+    console.log('get 读取', p.name);
+</script>
+</html>
