@@ -33,7 +33,7 @@
         setTimeout(function(){    //
             _this.style.left = '100px';
         },1000)
-        // setTimeout(()=>{    //此时匿名函数this指向的是window
+        // setTimeout(()=>{   
         //     this.style.left = '100px';
         // },1000)
     }
@@ -42,7 +42,7 @@
             console.log(this);
         }
     }
-    obj.fn();    //指向window,  
+    obj.fn();    //指向window,  因为obj是普通对象，无法形成作用域
     
 </script>
 </html>
